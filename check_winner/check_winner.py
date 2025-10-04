@@ -1,19 +1,10 @@
-def row_winner(board):
-    # Проверяем строки
-    if any([1 for x in board if len(set(x)) == 1 and x[0] != ' ']):
-        return True
+from row_winner import row_winner
+from column_winner import column_winner
+from diagonal_winner import diagonal_winner
 
-    # Проверяем столбцы
-    if any([1 for i in range(len(board)) if len(set([x[i] for x in board])) == 1]):
-        return True
 
-    # Проверяем диагональ
-    if len(set([board[i][i] for i in range(len(board))])) == 1 or \
-            len(set([board[i][len(board) - i - 1 ] for i in range(len(board))])) == 1:
-        return True
-
-    # Возвращаем False если не нашлось победителей
-    return False
+def check_winner(board):
+    return any([row_winner(board), column_winner(board), diagonal_winner(board)])
 
 
 def assert_equal(data, result):
@@ -24,7 +15,7 @@ def assert_equal(data, result):
 
 # Детектим строку
 assert_equal(
-    row_winner(
+    check_winner(
         [
             ['A', 'A', 'A', 'A'],
             [' ', ' ', ' ', ' '],
@@ -36,7 +27,7 @@ assert_equal(
 )
 # Детектим столбец
 assert_equal(
-    row_winner(
+    check_winner(
         [
             ['X', ' ', 'X'],
             ['O', ' ', 'X'],
@@ -47,7 +38,7 @@ assert_equal(
 )
 # Детектим диагонали
 assert_equal(
-    row_winner(
+    check_winner(
         [
             ['A', 'A', ' ', ' '],
             [' ', 'A', ' ', ' '],
@@ -58,7 +49,7 @@ assert_equal(
     True
 )
 assert_equal(
-    row_winner(
+    check_winner(
         [
             ['A', 'A', ' ', 'B'],
             [' ', 'A', 'B', ' '],
@@ -70,7 +61,7 @@ assert_equal(
 )
 # Нет победителя
 assert_equal(
-    row_winner(
+    check_winner(
         [
             [' ', ' ', ' ', ' '],
             [' ', 'A', ' ', ' '],
