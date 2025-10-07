@@ -45,7 +45,7 @@ def play_game(board_size, player1, player2):
     step_counter = 0
     current_player = True
 
-    while not winner(board) and step_counter < 9:
+    while not winner(board) and step_counter < len(board) ** 2:
         if current_player:
             play_move(board, player1)
         else:
@@ -58,4 +58,4 @@ def play_game(board_size, player1, player2):
         print_draw()
 
 
-play_game(3, 'X', 'O')
+play_game(5, 'X', 'O')

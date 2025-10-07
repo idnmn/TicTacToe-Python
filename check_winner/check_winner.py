@@ -13,7 +13,6 @@ def assert_equal(data, result):
     else:
         print(f"Error: expected: {result}, got: {data}")
 
-# Детектим строку
 assert_equal(
     check_winner(
         [
@@ -25,7 +24,6 @@ assert_equal(
     ),
     True
 )
-# Детектим столбец
 assert_equal(
     check_winner(
         [
@@ -36,7 +34,6 @@ assert_equal(
     ),
     True
 )
-# Детектим диагонали
 assert_equal(
     check_winner(
         [
@@ -59,7 +56,6 @@ assert_equal(
     ),
     True
 )
-# Нет победителя
 assert_equal(
     check_winner(
         [
