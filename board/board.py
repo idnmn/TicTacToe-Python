@@ -58,4 +58,4 @@ def play_game(board_size, player1, player2):
         print_draw()
 
 
-play_game(20, 'A', 'B')
+play_game(1, 'A', 'B')
